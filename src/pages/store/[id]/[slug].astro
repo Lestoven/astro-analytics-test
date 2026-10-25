@@ -1,0 +1,68 @@
+---
+import { products } from "../../../data/products";
+import Layout from "../../../layouts/Layout.astro";
+
+const { id, slug } = Astro.params;
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: {
+      id: String(product.id),
+      slug: product.slug,
+    },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<Layout>
+  <section class="py-8">
+    <div class="flex flex-row gap-20">
+      <img
+        src={product.src}
+        alt={product.alt}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        width="640"
+        height="640"
+      />
+
+      <div class="flex flex-col justify-between w-full md:flex-1 md:max-w-2xl">
+        <div class="flex flex-col gap-4">
+            <h1 class="text-4xl font-bold leading-tight tracking-tight">
+                {product.name}
+            </h1>
+            <p class="text-gray-500 text-base leading-relaxed">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit
+                consequuntur veniam consequatur, ut tempora ab voluptatem libero
+                quidem quasi adipisci.
+            </p>
+
+            <p class="text-4xl font-bold">
+                €{product.price}
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-8">
+            <div class="flex flex-col gap-2">
+                <p class="text-xl font-semibold">
+                    Size
+                </p>
+
+                <div class="flex flex-row gap-2">
+                    <button class="text-lg py-2 px-8 bg-zinc-200 rounded-xl cursor-pointer">S</button>
+                    <button class="text-lg py-2 px-8 bg-zinc-200 rounded-xl cursor-pointer">M</button>
+                    <button class="text-lg py-2 px-8 bg-zinc-200 rounded-xl cursor-pointer">L</button>
+                    <button class="text-lg py-2 px-8 bg-zinc-200 rounded-xl cursor-pointer">XL</button>
+                </div>
+            </div>
+
+            <button class="text-md py-3 px-8 bg-zinc-200 rounded-xl cursor-pointer">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

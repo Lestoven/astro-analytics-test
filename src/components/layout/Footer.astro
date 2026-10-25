@@ -1,0 +1,45 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerLinks = [
+  { href: '/', label: "Home" },
+  { href: '/store', label: 'All products' },
+];
+---
+
+<footer class="border-t border-black/10 bg-stone-50">
+  <div class="px-8 py-14 md:px-12 lg:px-16">
+    <div
+      class="flex gap-10 pb-6"
+    >
+      <section class="max-w-md">
+        <p
+          class="text-xs font-semibold uppercase tracking-[0.28em] text-black/55"
+        >
+           Astro e-commerce analytics
+        </p>
+        <h2 class="mt-4 text-3xl font-semibold tracking-tight text-black">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </h2>
+        <p class="mt-4 text-sm leading-6 text-black/65">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus nobis earum sint aliquam dignissimos nesciunt, rerum pariatur.
+        </p>
+      </section>
+
+      <nav aria-label="Footer shop navigation">
+        <p class="text-sm font-semibold text-black">Shop</p>
+        <ul class="mt-4 space-y-3 text-sm text-black/65">
+          {
+            footerLinks.map((link) => (
+              <li>
+                <a class="transition hover:text-black" href={link.href}>
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

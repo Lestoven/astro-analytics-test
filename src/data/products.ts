@@ -1,0 +1,60 @@
+import type { Product } from "../types/global";
+
+export const products: Product[] = [
+    {
+        id: 1,
+        slug: 'black-t-shirt',
+        name: "Black T-shirt",
+        price: 20,
+        src: "/products/black-t-shirt.jpeg",
+        alt: "Black T-shirt",
+    },
+    {
+        id: 2,
+        slug: 'blue-t-shirt',
+        name: "Blue T-shirt",
+        price: 21,
+        src: "/products/blue-t-shirt.jpeg",
+        alt: "Blue T-shirt",
+    },
+    {
+        id: 3,
+        slug: 'burgundy-t-shirt',
+        name: "Burgundy T-shirt",
+        price: 25,
+        src: "/products/burgundy-t-shirt.jpeg",
+        alt: "Burgundy T-shirt",
+    },
+    {
+        id: 4,
+        slug: 'dark-blue-t-shirt',
+        name: "Dark blue T-shirt",
+        price: 20,
+        src: "/products/dark-blue-t-shirt.jpeg",
+        alt: "Dark blue T-shirt",
+    },
+    {
+        id: 5,
+        slug: 'gray-t-shirt',
+        name: "Gray T-shirt",
+        price: 15,
+        src: "/products/gray-t-shirt.jpeg",
+        alt: "Gray T-shirt",
+    },
+    {
+        id: 6,
+        slug: 'latte-t-shirt',
+        name: "Latte T-shirt",
+        price: 24,
+        src: "/products/latte-t-shirt.jpeg",
+        alt: "Latte T-shirt",
+    },
+    {
+        id: 7,
+        slug: 'white-t-shirt',
+        name: "White T-shirt",
+        price: 20,
+        src: "/products/white-t-shirt.jpeg",
+        alt: "White T-shirt",
+    },
+];
