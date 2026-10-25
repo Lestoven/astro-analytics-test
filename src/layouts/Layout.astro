@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
-import Nav from '../components/layout/Nav.astro';
-import Footer from '../components/layout/Footer.astro';
+import Nav from "../components/layout/Nav.astro";
+import Footer from "../components/layout/Footer.astro";
 import ClientRouter from "astro/components/ClientRouter.astro";
 
 const SITE_NAME = "Astro e-commerce";
@@ -14,46 +14,55 @@ interface Props {
   type?: "website" | "product";
   noindex?: boolean;
 }
-const {
-  title,
-  description = DEFAULT_DESCRIPTION,
-} = Astro.props;
+const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
 
 const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
 
 const canonicalUrl = new URL(
   Astro.url.pathname,
-  Astro.site ?? Astro.url.origin
+  Astro.site ?? Astro.url.origin,
 );
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{pageTitle}</title>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
 
-		<meta name="description" content={description} />
-		<link rel="canonical" href={canonicalUrl.href} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl.href} />
 
     <ClientRouter />
-	</head>
-	<body class="min-h-screen bg-white text-black">
+  </head>
+  <body class="min-h-screen bg-white text-black">
     <div class="mx-auto flex min-h-screen w-full max-w-[2000px] flex-col">
-      	<Nav />
-      	<main class="flex-1 min-h-[calc(100vh-72px)] px-4 md:px-20">
-        	<slot />
-      	</main>
-      	<Footer />
+      <Nav />
+      <main class="flex-1 min-h-[calc(100vh-72px)] px-4 md:px-20">
+        <slot />
+      </main>
+      <Footer />
     </div>
 
-	<script>
-      import { initFlowbite } from 'flowbite';
+    <script>
+      import { initFlowbite } from "flowbite";
 
       initFlowbite();
-      document.addEventListener('astro:after-swap', initFlowbite);
+      document.addEventListener("astro:after-swap", initFlowbite);
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RQCPCL5RM"></script>
+    <script>
+      // @ts-nocheck
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-8RQCPCL5RM");
     </script>
   </body>
 </html>
